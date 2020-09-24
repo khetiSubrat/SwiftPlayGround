@@ -2,6 +2,94 @@ import UIKit
 
 var str = "Hello, playground"
 
+
+// MAX Heap
+
+/*var array = [1, 4, 3, 7, 8, 9, 10]
+var startIndex = array.count / 2
+
+while startIndex >= 0 {
+    buildMaxHeap(&array, startIndex, array.count - 1)
+    startIndex -=  1
+}
+
+print("Array after max heap operation \(array)")*/
+
+
+// Min Heap
+
+var array = [10, 1, 0, 8, 7, 2]
+var startIndex = array.count / 2
+
+while startIndex >= 0 {
+    buildMinHeap(&array, startIndex, array.count - 1)
+    startIndex -=  1
+}
+
+print("Array after min heap operation \(array)")
+
+
+func buildMaxHeap(_ array: inout [Int], _ index: Int, _ size: Int) {
+    
+    if index >= size {
+        return
+    }
+    
+    let left = 2 * index + 1
+    let right = 2 * index + 2
+    
+    
+    var largest = index
+    
+    if left <= size && array[largest] < array[left] {
+        largest = left
+    }
+    
+    if right <= size && array[largest] < array[right] {
+        largest = right
+    }
+    
+    if largest != index {
+        let temp = array[largest]
+        array[largest] = array[index]
+        array[index] = temp
+        buildMaxHeap(&array, largest, size)
+    }
+    
+}
+
+
+func buildMinHeap(_ array: inout [Int], _ index: Int, _ size: Int) {
+    
+    if index >= size {
+        return
+    }
+    
+    let left = 2 * index + 1
+    let right = 2 * index + 2
+    
+    
+    var largest = index
+    
+    if left <= size && array[largest] > array[left] {
+        largest = left
+    }
+    
+    if right <= size && array[largest] > array[right] {
+        largest = right
+    }
+    
+    if largest != index {
+        let temp = array[largest]
+        array[largest] = array[index]
+        array[index] = temp
+        buildMinHeap(&array, largest, size)
+    }
+    
+}
+
+
+
 // Stack
 class Stack {
     var items: [Int]?

@@ -55,3 +55,12 @@ print(result1)
 
 let result2 = giraffes.flatMap({$0}).filter({$0 > 10})
 print(result2)
+
+
+//
+struct User {
+    let name: String
+    let age: Int
+}
+
+
